@@ -502,7 +502,7 @@ declare module "node-forge" {
 
             addCertificate(certificate: pki.Certificate): void;
             addSigner(options: {
-                key: string;
+                key: string | pki.PrivateKey;
                 certificate: pki.Certificate;
                 digestAlgorithm: string;
                 authenticatedAttributes: { type: string; value?: string }[];
@@ -514,6 +514,7 @@ declare module "node-forge" {
         }
 
         function createSignedData(): PkcsSignedData;
+        function messageToPem(msg: PkcsSignedData, maxLines?: number | undefined): string
     }
 
     namespace md {
